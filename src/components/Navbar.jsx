@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-lg px-4">
+    <div className="navbar bg-base-100/60 shadow-lg px-4 sticky top-0 z-50">
       {/* Logo */}
       <div className="navbar-start">
         <Link 
