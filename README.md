@@ -16,7 +16,8 @@ Detail Tim :
     - Popular Movies
     - Tv series
   - mengerjakan components untuk web
-  - membuat logi untuk skeleton loading state
+  - membuat logic untuk skeleton loading state
+  - mengatur tentang API untuk website
 
 • Athoillah Vidy Fairuz(03)
   - Logic Trailer home page
