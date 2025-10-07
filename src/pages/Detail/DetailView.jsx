@@ -39,7 +39,8 @@ const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = []
     ? favorites.movies.some(fav => fav.id === item.id)
     : favorites.tvShows.some(fav => fav.id === item.id);
 
-  
+
+
   useEffect(() => {
     const ratingKey = `rating-${type}-${item.id}`;
     const savedRating = localStorage.getItem(ratingKey);
@@ -48,7 +49,6 @@ const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = []
     }
   }, [type, item.id]);
 
-  
   const handleRatingChange = (rating) => {
     setUserRating(rating);
     const ratingKey = `rating-${type}-${item.id}`;

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home/Home';
 import Detail from './pages/Detail/Detail';
 import Search from './pages/Search/Search';
@@ -23,6 +24,7 @@ function App() {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
+          <Footer />
         </div>
       </Router>
     </Provider>
