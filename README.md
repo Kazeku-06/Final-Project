@@ -1,6 +1,8 @@
 # Final Project LuminCine
 
 Ketua Tim : Naufal Harist Hanif Dzaky
+
+
 Detail Tim : 
 - Naufal Harist Hanif Dzaky(20)
   - membuat struktur web
