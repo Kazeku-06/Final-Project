@@ -39,11 +39,12 @@ Detail Tim :
   - Search film dan series
   - Merapihkan dan merubah tampilan (styling)
   - Moderator
-  - Memastikan list favorite tersimpan
+ 
 
 • Rahmauludia Fatmala Sari(25)
   - Merapikan tampilan(styling)
   - Merapikan card di HomeView
+   - Memastikan list favorite tersimpan
 
 list halaman :
 - homepage
