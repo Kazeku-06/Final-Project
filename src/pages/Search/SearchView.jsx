@@ -12,14 +12,19 @@ const SearchView = ({ results, loading, query, error, pagination, onPageChange }
   const { searchTerm, setSearchTerm } = useSearch();
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [showVideoModal, setShowVideoModal] = useState(false);
+  const [showNoTrailerModal, setShowNoTrailerModal] = useState(false);
 
   const filteredResults = results.filter(item =>
     item.media_type === 'movie' || item.media_type === 'tv'
   );
 
   const handlePlayTrailer = (video) => {
-    setSelectedVideo(video);
-    setShowVideoModal(true);
+    if (video) {
+      setSelectedVideo(video);
+      setShowVideoModal(true);
+    } else {
+      setShowNoTrailerModal(true);
+    }
   };
 
   return (
@@ -97,6 +102,29 @@ const SearchView = ({ results, loading, query, error, pagination, onPageChange }
         isOpen={showVideoModal}
         onClose={() => setShowVideoModal(false)}
       />
+
+      {/* No Trailer Modal */}
+      {showNoTrailerModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 animate-fade-in">
+          <div className="bg-base-100 p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-100 animate-bounce-in">
+            <div className="text-center">
+              <div className="mb-4">
+                <svg className="w-16 h-16 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-base-content">Video Trailer Tidak Tersedia</h3>
+              <p className="text-gray-600 mb-6">Maaf, trailer untuk film ini belum tersedia saat ini.</p>
+              <button
+                onClick={() => setShowNoTrailerModal(false)}
+                className="btn btn-primary btn-block rounded-full"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

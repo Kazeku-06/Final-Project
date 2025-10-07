@@ -10,10 +10,10 @@ const Carousel = ({ items, title, type = "movie", children }) => {
     speed: 1000,
     slidesToShow: 6,
     slidesToScroll: 1,
-    autoplay: true, // Aktifkan autoplay
-    autoplaySpeed: 2000, // Durasi antar geser dalam milidetik (2 detik)
+    autoplay: true, 
+    autoplaySpeed: 2000, 
     cssEase: "linear",
-    pauseOnHover: true, // Berhenti saat hover
+    pauseOnHover: true, 
     swipeToSlide: true,
     responsive: [
       {

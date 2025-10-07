@@ -7,10 +7,10 @@ const axiosInstance = axios.create({
     'Authorization': `Bearer ${API_TOKEN}`,
     'Content-Type': 'application/json'
   },
-  timeout: 10000, // 10 second timeout
+  timeout: 10000, 
 });
 
-// Request interceptor
+
 axiosInstance.interceptors.request.use(
   (config) => {
     console.log(`Making ${config.method?.toUpperCase()} request to ${config.url}`);
@@ -22,7 +22,7 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-// Response interceptor
+
 axiosInstance.interceptors.response.use(
   (response) => {
     return response;
@@ -33,7 +33,7 @@ axiosInstance.interceptors.response.use(
     
     console.error(`API Error ${statusCode}:`, errorMessage);
     
-    // Custom error messages based on status code
+    
     if (statusCode === 404) {
       error.message = 'Resource not found';
     } else if (statusCode === 401) {

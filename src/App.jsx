@@ -18,10 +18,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/search" element={<Search />} />
               <Route path="/favorites" element={<Favorite />} />
-              {/* Gunakan path yang eksplisit */}
               <Route path="/movie/:id" element={<Detail />} />
               <Route path="/tv/:id" element={<Detail />} />
-              {/* Fallback route */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
@@ -31,7 +29,7 @@ function App() {
   );
 }
 
-// Component untuk handle 404 pages
+
 const NotFound = () => {
   const navigate = useNavigate();
   

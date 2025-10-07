@@ -5,7 +5,7 @@ const useSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState(searchParams.get('q') || '');
 
-  // Update URL ketika search term berubah
+  // Update URL 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (searchTerm.trim()) {
@@ -18,7 +18,7 @@ const useSearch = () => {
     return () => clearTimeout(timeoutId);
   }, [searchTerm, setSearchParams]);
 
-  // Sync searchTerm dengan URL ketika navigasi
+  // Sync searchTerm 
   useEffect(() => {
     const query = searchParams.get('q') || '';
     setSearchTerm(query);

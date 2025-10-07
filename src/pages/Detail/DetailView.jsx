@@ -28,7 +28,7 @@ const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = []
     }
   };
 
-  // Fetch trailer if not provided
+  
   const { videos: fetchedVideos } = useVideoTrailer(
     item?.id,
     type === 'movie' ? 'movie' : 'tv'
@@ -39,7 +39,7 @@ const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = []
     ? favorites.movies.some(fav => fav.id === item.id)
     : favorites.tvShows.some(fav => fav.id === item.id);
 
-  // Load user rating from localStorage on mount
+  
   useEffect(() => {
     const ratingKey = `rating-${type}-${item.id}`;
     const savedRating = localStorage.getItem(ratingKey);
@@ -48,7 +48,7 @@ const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = []
     }
   }, [type, item.id]);
 
-  // Save rating to localStorage
+  
   const handleRatingChange = (rating) => {
     setUserRating(rating);
     const ratingKey = `rating-${type}-${item.id}`;
@@ -88,13 +88,13 @@ const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = []
   const [currentTrailerIndex, setCurrentTrailerIndex] = useState(0);
   const [player, setPlayer] = useState(null);
   const [isMuted, setIsMuted] = useState(false);
-  // Available trailers - combine single trailerKey with trailerKeys array
+  
   const availableTrailers = trailerKeys.length > 0 ? trailerKeys : (trailerKey ? [trailerKey] : []);
 
-  // Use fetchedVideos if available and no trailerKeys or trailerKey provided
+  
   const effectiveTrailers = availableTrailers.length > 0 ? availableTrailers : (fetchedVideos.length > 0 ? fetchedVideos.map(v => v.key) : []);
 
-  // Load YouTube IFrame Player API
+  
   useEffect(() => {
     if (!window.YT) {
       const tag = document.createElement('script');
@@ -104,7 +104,7 @@ const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = []
     }
   }, []);
 
-  // Initialize YouTube player when trailer is shown
+  
   useEffect(() => {
     if (showBackdropTrailer && effectiveTrailers.length > 0 && window.YT && window.YT.Player) {
       const ytPlayer = new window.YT.Player('youtube-player', {
@@ -124,7 +124,7 @@ const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = []
             ytPlayer.playVideo();
           },
           onStateChange: (event) => {
-            if (event.data === 0) { // Video ended
+            if (event.data === 0) {
               const nextIndex = (currentTrailerIndex + 1) % effectiveTrailers.length;
               setCurrentTrailerIndex(nextIndex);
               if (ytPlayer) {
@@ -145,7 +145,7 @@ const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = []
     }
     setShowBackdropTrailer(newShow);
     if (newShow) {
-      setCurrentTrailerIndex(0); // Reset to first trailer when opening
+      setCurrentTrailerIndex(0); 
     }
   };
 

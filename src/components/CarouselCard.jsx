@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IMAGE_BASE_URL, imageSizes } from '../../utils/constants'; // Sesuaikan path jika berbeda
+import { IMAGE_BASE_URL, imageSizes } from '../../utils/constants'; 
 
 const CarouselCard = ({ item, type = 'movie' }) => {
   const navigate = useNavigate();

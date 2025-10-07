@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-base-100 shadow-lg px-4">
-      {/* Kiri: Logo */}
+      {/* Logo */}
       <div className="navbar-start">
         <Link 
           to="/" 
@@ -28,7 +28,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Tengah: Menu desktop */}
+      {/* Menu desktop */}
       <div className="navbar-center hidden lg:flex">
         <ul className="flex gap-4">
           <li>
@@ -67,7 +67,7 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Kanan: Toggle & Language */}
+      {/* Toggle & Language */}
       <div className="navbar-end gap-2">
         {/* Theme Toggle */}
         <button 

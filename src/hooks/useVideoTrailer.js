@@ -21,7 +21,7 @@ const useVideoTrailer = (itemId, type = 'movie') => {
           ? await api.getMovieVideos(itemId)
           : await api.getTVVideos(itemId);
         
-        // Filter hanya trailer YouTube
+        // Filter 
         const trailers = videoData?.results?.filter(video => 
           video.type === 'Trailer' && video.site === 'YouTube'
         ) || [];

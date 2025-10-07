@@ -3,7 +3,7 @@ import HomeView from './HomeView';
 import { api } from '../../services/api';
 import SkeletonLoader from '../../components/SkeletonLoader';
 
-// Reducer untuk state management yang kompleks
+// Reducer
 const homeReducer = (state, action) => {
   switch (action.type) {
     case 'SET_LOADING':
@@ -57,7 +57,7 @@ const Home = () => {
     page: 1
   });
 
-  // Fetch initial data
+  // Fetch 
   useEffect(() => {
     const fetchInitialData = async () => {
       try {
@@ -72,7 +72,7 @@ const Home = () => {
           api.getTVGenres()
         ]);
 
-        // Handle movies
+        // Handle film
         if (moviesData.status === 'fulfilled' && moviesData.value.results) {
           dispatch({ type: 'SET_MOVIES', payload: moviesData.value.results });
           dispatch({
@@ -96,7 +96,7 @@ const Home = () => {
           });
         }
 
-        // Handle other data
+        // Handle data lain
         if (trendingData.status === 'fulfilled') {
           dispatch({ type: 'SET_TRENDING', payload: trendingData.value.results || [] });
         }
@@ -121,7 +121,7 @@ const Home = () => {
     fetchInitialData();
   }, []);
 
-  // Fetch filtered movies
+  // Fetch buat filter film
   const fetchFilteredMovies = async (filters) => {
     try {
       dispatch({ type: 'SET_LOADING', payload: true });
@@ -148,7 +148,7 @@ const Home = () => {
     }
   };
 
-  // Fetch filtered TV series
+  // Fetch buat filter TV series
   const fetchFilteredTV = async (filters) => {
     try {
       dispatch({ type: 'SET_LOADING', payload: true });

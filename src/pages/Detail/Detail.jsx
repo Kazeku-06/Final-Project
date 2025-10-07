@@ -13,9 +13,9 @@ const Detail = () => {
   const [similar, setSimilar] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [trailerKey, setTrailerKey] = useState(null); // new state for trailer key
+  const [trailerKey, setTrailerKey] = useState(null); 
 
-  // Extract type dari pathname
+  
   const getTypeFromPath = () => {
     const path = location.pathname;
     if (path.includes('/movie/')) return 'movie';
@@ -33,7 +33,7 @@ const Detail = () => {
       fullURL: window.location.href
     });
     
-    // Validasi parameter
+    // Validasi
     if (!id || isNaN(Number(id))) {
       console.error('❌ Invalid ID:', id);
       setError(`Invalid ID: "${id}". Must be a valid number.`);
@@ -60,7 +60,7 @@ const Detail = () => {
             api.getMovieDetails(id),
             api.getMovieCredits(id),
             api.getSimilarMovies(id),
-            api.getMovieVideos(id) // fetch videos
+            api.getMovieVideos(id) 
           ]);
 
           console.log('🎬 Movie API results:', { 
@@ -79,7 +79,7 @@ const Detail = () => {
           setCredits(creditsData.status === 'fulfilled' ? creditsData.value.cast || [] : []);
           setSimilar(similarData.status === 'fulfilled' ? similarData.value.results || [] : []);
 
-          // Extract trailer key from videos
+         
           if (videosData.status === 'fulfilled' && videosData.value && videosData.value.results) {
             const trailer = videosData.value.results.find(
               video => video.type === 'Trailer' && video.site === 'YouTube'
@@ -93,7 +93,7 @@ const Detail = () => {
           const [itemData, creditsData, videosData] = await Promise.allSettled([
             api.getTVDetails(id),
             api.getTVCredits(id),
-            api.getTVVideos(id) // fetch TV videos
+            api.getTVVideos(id) 
           ]);
 
           console.log('📺 TV API results:', { 
@@ -111,7 +111,7 @@ const Detail = () => {
           setCredits(creditsData.status === 'fulfilled' ? creditsData.value.cast || [] : []);
           setSimilar([]);
 
-          // Extract trailer key from videos
+         
           if (videosData.status === 'fulfilled' && videosData.value && videosData.value.results) {
             const trailer = videosData.value.results.find(
               video => video.type === 'Trailer' && video.site === 'YouTube'
@@ -208,7 +208,7 @@ const Detail = () => {
       type={type}
       credits={credits}
       similar={similar}
-      trailerKey={trailerKey} // pass trailer key as prop
+      trailerKey={trailerKey} 
     />
   );
 };

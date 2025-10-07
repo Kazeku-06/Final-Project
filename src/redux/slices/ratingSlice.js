@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  ratings: {}, // { [itemId]: rating } where rating is 1-5
+  ratings: {}, 
 };
 
 const ratingSlice = createSlice({

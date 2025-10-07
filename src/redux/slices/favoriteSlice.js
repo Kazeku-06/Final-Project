@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Initialize state from localStorage or use default empty state
+
 const initialState = {
   movies: JSON.parse(localStorage.getItem('favorites_movies')) || [],
   tvShows: JSON.parse(localStorage.getItem('favorites_tvShows')) || [],

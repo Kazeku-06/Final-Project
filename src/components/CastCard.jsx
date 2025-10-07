@@ -7,7 +7,7 @@ const CastCard = ({ cast }) => {
 
   return (
     <div className="flex flex-col items-center text-center">
-      <div className="w-36 h-54"> {/* Diubah dari w-28 h-42 menjadi w-36 h-54 */}
+      <div className="w-36 h-54"> 
         <img 
           src={profileUrl} 
           alt={cast.name} 

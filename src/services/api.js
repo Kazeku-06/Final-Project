@@ -13,11 +13,11 @@ const handleApiCall = async (apiCall) => {
   }
 };
 
-// Tambahkan constant untuk filter agar tidak ada konten dewasa
+// filter biar gak ada yang 18+
 const SAFE_FILTER = "&include_adult=false";
 
 export const api = {
-  // 🎬 Movies dengan filter dan sorting (tanpa konten dewasa)
+  // film
   getDiscoverMovies: (page = 1, sortBy = "popularity.desc", genre = "") =>
     handleApiCall(() => {
       let url = `/discover/movie?page=${page}&sort_by=${sortBy}${SAFE_FILTER}`;
@@ -40,7 +40,7 @@ export const api = {
   getMovieVideos: (movieId) =>
     handleApiCall(() => axiosInstance.get(`/movie/${movieId}/videos`)),
 
-  // 📺 TV Series dengan filter dan sorting (tanpa konten dewasa)
+  // TV Series
   getDiscoverTV: (page = 1, sortBy = "popularity.desc", genre = "") =>
     handleApiCall(() => {
       let url = `/discover/tv?page=${page}&sort_by=${sortBy}${SAFE_FILTER}`;
@@ -56,11 +56,11 @@ export const api = {
   getTVVideos: (tvId) =>
     handleApiCall(() => axiosInstance.get(`/tv/${tvId}/videos`)),
 
-  // 🔥 Trending
+  //  Trending
   getTrendingAll: (page = 1) =>
     handleApiCall(() => axiosInstance.get(`/trending/all/week?page=${page}`)),
 
-  // 🔍 Search dengan pagination
+  //  Search dengan pagination
   searchAll: (query, page = 1) =>
     handleApiCall(() =>
       axiosInstance.get(
@@ -70,13 +70,13 @@ export const api = {
       )
     ),
 
-  // 🎭 Genres
+  //  Genres
   getMovieGenres: () =>
     handleApiCall(() => axiosInstance.get("/genre/movie/list")),
 
   getTVGenres: () => handleApiCall(() => axiosInstance.get("/genre/tv/list")),
 
-  // ⭐ Rating endpoints
+  //  Rating endpoints
   addRating: (type, id, rating) =>
     handleApiCall(() =>
       axiosInstance.post(`/${type}/${id}/rating`, { value: rating })
@@ -85,7 +85,7 @@ export const api = {
   deleteRating: (type, id) =>
     handleApiCall(() => axiosInstance.delete(`/${type}/${id}/rating`)),
 
-  // 👤 Account endpoints
+  //  Account endpoints
   getAccountDetails: () => handleApiCall(() => axiosInstance.get("/account")),
 
   getRatedMovies: (accountId) =>

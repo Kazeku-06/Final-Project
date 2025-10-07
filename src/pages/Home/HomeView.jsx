@@ -34,21 +34,21 @@ const HomeView = ({
   const [currentFeaturedIndex, setCurrentFeaturedIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
 
-  // Custom hook untuk trailer trending item (akan berganti saat video habis)
+  
   const featuredItem = trending[currentFeaturedIndex];
   const { videos: trendingVideos } = useVideoTrailer(
     featuredItem?.id,
     featuredItem?.media_type
   );
 
-  // Randomize featured item on page load/refresh
+  
   useEffect(() => {
     if (trending.length > 0) {
       setCurrentFeaturedIndex(Math.floor(Math.random() * trending.length));
     }
   }, [trending.length]);
 
-  // Load YouTube IFrame Player API
+  
   useEffect(() => {
     if (!window.YT) {
       const tag = document.createElement("script");
@@ -58,7 +58,7 @@ const HomeView = ({
     }
   }, []);
 
-  // Initialize YouTube player when videos are available
+  
   useEffect(() => {
     if (
       trendingVideos.length > 0 &&
@@ -85,11 +85,11 @@ const HomeView = ({
           },
           onStateChange: (event) => {
             if (event.data === 0) {
-              // Video ended, switch to next trailer or next item
+              
               setCurrentVideoIndex((prevIndex) => {
                 const nextIndex = prevIndex + 1;
                 if (nextIndex >= trendingVideos.length) {
-                  // All trailers played, switch to next item
+                  
                   const nextFeaturedIndex = (currentFeaturedIndex + 1) % trending.length;
                   setCurrentFeaturedIndex(nextFeaturedIndex);
                   return 0;
@@ -103,12 +103,12 @@ const HomeView = ({
     }
   }, [trendingVideos, currentVideoIndex, featuredPlayer, currentFeaturedIndex]);
 
-  // Reset video index when featured item changes
+  
   useEffect(() => {
     setCurrentVideoIndex(0);
   }, [currentFeaturedIndex]);
 
-  // Load new video when index changes
+  
   useEffect(() => {
     if (featuredPlayer && trendingVideos.length > 0) {
       featuredPlayer.loadVideoById(trendingVideos[currentVideoIndex].key);
@@ -147,7 +147,7 @@ const HomeView = ({
     }
   };
 
-  // Options untuk sorting
+  // pengaturan buat sorting 
   const sortOptions = [
     { value: "popularity.desc", label: "Most Popular" },
     { value: "popularity.asc", label: "Least Popular" },
@@ -159,7 +159,7 @@ const HomeView = ({
     { value: "title.desc", label: "Title Z-A" },
   ];
 
-  // Handler untuk pagination movies
+  // Handler untuk pagination film
   const handleMoviesPageChange = (page) => {
     onMoviesFilterChange({ ...moviesFilter, page });
   };
@@ -169,7 +169,7 @@ const HomeView = ({
     onTVFilterChange({ ...tvFilter, page });
   };
 
-  // Jika tidak ada data, tampilkan pesan
+  // Jika tidak ada data
   const hasData =
     movies.length > 0 ||
     tvSeries.length > 0 ||

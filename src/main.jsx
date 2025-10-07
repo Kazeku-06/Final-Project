@@ -6,7 +6,7 @@ import { selectCurrentTheme } from './redux/slices/themeSlice.js'
 import App from './App.jsx'
 import './index.css'
 
-// Initialize theme
+
 const initializeTheme = () => {
   const savedTheme = localStorage.getItem('theme');
   const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');

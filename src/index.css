@@ -7,37 +7,37 @@
 
 
 
-/* Smooth transitions for theme switching */
+
 * {
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Override DaisyUI dark theme to use pure black */
+
 [data-theme="dark"] {
-  --b1: 0 0 0; /* Pure black for primary background */
-  --b2: 0 0 0; /* Pure black for secondary background */
-  --b3: 0 0 0; /* Pure black for tertiary background */
-  --n: 0 0 0;  /* Pure black for neutral background */
-  --nc: 255 255 255; /* White text for contrast */
-  --bc: 255 255 255; /* White for text and borders */
+  --b1: 0 0 0; 
+  --b2: 0 0 0; 
+  --b3: 0 0 0; 
+  --n: 0 0 0;  
+  --nc: 255 255 255; 
+  --bc: 255 255 255; 
 }
 
-/* Ensure cards use pure black in dark theme */
+
 [data-theme="dark"] .card,
 [data-theme="dark"] .bg-base-100,
 [data-theme="dark"] .bg-base-200,
 [data-theme="dark"] .bg-base-300 {
-  background-color: #000000 !important; /* Enforce pure black for cards and base backgrounds */
+  background-color: #000000 !important; 
 }
 
-/* Ensure modals and other components use pure black in dark theme */
+
 [data-theme="dark"] .modal .bg-base-100 {
   background-color: #000000 !important;
 }
 
-/* Light theme remains unchanged, using DaisyUI's default light theme */
+
 [data-theme="light"] {
-  --b1: 255 255 255; /* Default light theme background */
+  --b1: 255 255 255; 
   --b2: 245 245 245;
   --b3: 235 235 235;
   --n: 200 200 200;
@@ -45,7 +45,7 @@
   --bc: 0 0 0;
 }
 
-/* Custom scrollbar */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -63,7 +63,7 @@
   background: oklch(var(--pf));
 }
 
-/* Animation for skeleton loader */
+
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -77,7 +77,7 @@
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Line clamp utilities */
+
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
