@@ -6,7 +6,7 @@ Ketua Tim : Naufal Harist Hanif Dzaky
 Detail Tim : 
 - Naufal Harist Hanif Dzaky(20)
   - membuat struktur web
-  - mengerjakan logic web
+  - mengerjakan beberapa logic web
   - mengerjakan logic untuk homepage
   - memastikan seluruh logic sistem benar
   - mengerjakan bagian redux untuk bahasa dan tema
