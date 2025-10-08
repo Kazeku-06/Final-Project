@@ -18,6 +18,7 @@ Detail Tim :
   - mengerjakan components untuk web
   - membuat logic untuk skeleton loading state
   - mengatur tentang API untuk website
+  - membuat card untuk movie dan tv series
 
 • Athoillah Vidy Fairuz(03)
   - Logic Trailer home page
