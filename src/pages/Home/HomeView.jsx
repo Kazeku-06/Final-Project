@@ -265,7 +265,7 @@ const HomeView = ({
         </section>
       )}
 
-      {/* Video Modal */}
+      {/* Video Trailer Modal pop up */}
       <VideoModal
         video={selectedVideo}
         isOpen={showVideoModal}
