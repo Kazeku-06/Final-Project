@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { addFavorite, removeFavorite } from '../../redux/slices/favoriteSlice';
 import { selectTranslations } from '../../redux/slices/languageSlice';
 import Carousel from '../../components/Carousel';
@@ -9,6 +9,7 @@ import VideoModal from '../../components/VideoModal';
 import { IMAGE_BASE_URL, imageSizes } from '../../utils/constants';
 import { formatDate, formatDuration } from '../../utils/helpers';
 import useVideoTrailer from '../../hooks/useVideoTrailer';
+import toyStoryAudio from '../../assets/When the nights are long and blue,.mp3';
 
 const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = [] }) => {
   const dispatch = useDispatch();
@@ -18,6 +19,8 @@ const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = []
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [showVideoModal, setShowVideoModal] = useState(false);
   const [showNoTrailerModal, setShowNoTrailerModal] = useState(false);
+  const audioRef = useRef(null);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
   const handlePlayTrailer = (video) => {
     if (video) {
@@ -295,6 +298,26 @@ const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = []
               <p className="text-lg leading-relaxed">{item.overview}</p>
             </div>
 
+            {isMovie && item.title && item.title.toLowerCase().includes('toy story') && (
+              <div className="mb-6">
+                <button
+                  onClick={() => {
+                    if (audioRef.current) {
+                      if (isAudioPlaying) {
+                        audioRef.current.pause();
+                      } else {
+                        audioRef.current.play();
+                      }
+                      setIsAudioPlaying(!isAudioPlaying);
+                    }
+                  }}
+                  className="btn btn-primary"
+                >
+                  {isAudioPlaying ? '⏸️ Pause Audio' : '▶️ Play Toy Story Audio'}
+                </button>
+              </div>
+            )}
+
             {/* Backdrop/Trailer Toggle Button */}
             {backdropUrl && effectiveTrailers.length > 0 && (
               <div className="mb-6">
@@ -415,6 +438,13 @@ const DetailView = ({ item, type, credits, similar, trailerKey, trailerKeys = []
           </div>
         </div>
       )}
+      <audio
+        ref={audioRef}
+        src={toyStoryAudio}
+        onEnded={() => setIsAudioPlaying(false)}
+        onPlay={() => setIsAudioPlaying(true)}
+        onPause={() => setIsAudioPlaying(false)}
+      />
     </div>
   );
 };

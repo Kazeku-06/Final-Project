@@ -11,7 +11,7 @@ const Carousel = ({ items, title, type = "movie", children }) => {
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true, 
-    autoplaySpeed: 2000, 
+    autoplaySpeed: 2000,
     cssEase: "linear",
     pauseOnHover: true, 
     swipeToSlide: true,
